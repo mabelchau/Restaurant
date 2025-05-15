@@ -5,16 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Social Media</title>
   <link rel='stylesheet' href='./style.css'>
+  <style>
+    .social-icons a {
+      margin: 0 15px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .social-icons img {
+      width: 60px;
+      height: auto;
+    }
+
+    .comment {
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 4px solid #ff6347;
+      background-color: #f9f9f9;
+    }
+
+    .kudos, .criticisms {
+      margin: 15px auto;
+      max-width: 700px;
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .paragraph {
+      text-align: center;
+    }
+
+    .social-section {
+      padding: 20px;
+    }
+  </style>
 </head>
+
 <body>
-  <!-- Logo Section -->
+  <!-- Logo -->
   <div class="logo">
     <a href="./home.html">
       <img src="./images/logo2.png" height="150px" width="150px" alt="Mama's Logo"/>
     </a>
   </div>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <div class="navbar">
     <div class="nav-item"><a href="./social.html">Socials</a></div>
     <div class="nav-item"><a href="./contact.html">Contact</a></div>
@@ -25,45 +72,55 @@
 
   <div class="space"></div>
 
-  <!-- Page Header -->
+  <!-- Page Heading -->
   <h1>Follow & Share the Love</h1>
 
-  <!-- Social Media Section -->
+  <!-- Social Media Icons with Color Logos -->
   <div class="container">
     <h2>Shoutouts from Our Fans ❤️</h2>
     <p class="paragraph">
       Our customers have shown so much love on social media—thank you! Whether it’s a quick lunch from the food truck or a cozy dinner from Mama’s kitchen, we appreciate every photo, tag, and story you share.
     </p>
-    
+
     <h3>Connect With Us:</h3>
-    <div style="text-align:center;">
-      <a href="https://www.instagram.com" target="_blank"><img src="./images/instagram.png" width="50px" alt="Instagram"></a>
-      <a href="https://www.facebook.com" target="_blank"><img src="./images/facebook.png" width="50px" alt="Facebook"></a>
-      <a href="https://www.twitter.com" target="_blank"><img src="./images/twitter.png" width="50px" alt="Twitter"></a>
-      <a href="https://www.yelp.com" target="_blank"><img src="./images/yelp.png" width="50px" alt="Yelp"></a>
+    <div class="social-icons" style="text-align: center; margin-top: 15px;">
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="./images/instagram-color.png" alt="Instagram">
+      </a>
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="./images/facebook-color.png" alt="Facebook">
+      </a>
+      <a href="https://www.twitter.com" target="_blank">
+        <img src="./images/twitter-color.png" alt="Twitter">
+      </a>
+      <a href="https://www.yelp.com" target="_blank">
+        <img src="./images/yelp-color.png" alt="Yelp">
+      </a>
     </div>
 
-      <!-- Page Title -->
-  <h1>What People Are Saying</h1>
+    <!-- Customer Reviews -->
+    <h1>What People Are Saying</h1>
 
-  <div class="social-section">
-    <!-- Kudos Section -->
-    <h2>Kudos 💖</h2>
-    <div class="kudos">
-      <div class="comment">"The pasta was amazing! I felt like I was in Italy. Will definitely come again!" — Jamie</div>
-      <div class="comment">"Super friendly staff and fast service. The Tiramisu is to die for!" — Alex</div>
-      <div class="comment">"The ambiance is cozy and the wine list is spot on. Highly recommended." — Taylor</div>
-    </div>
+    <div class="social-section">
+      <!-- Kudos Section -->
+      <h2>Kudos 💖</h2>
+      <div class="kudos">
+        <div class="comment">"The pasta was amazing! I felt like I was in Italy. Will definitely come again!" — Jamie</div>
+        <div class="comment">"Super friendly staff and fast service. The Tiramisu is to die for!" — Alex</div>
+        <div class="comment">"The ambiance is cozy and the wine list is spot on. Highly recommended." — Taylor</div>
+      </div>
 
-    <!-- Criticisms Section -->
-    <h2>Criticisms 💬</h2>
-    <div class="criticisms">
-      <div class="comment">"The pizza was great but arrived a bit cold. Hope it’s hotter next time." — Morgan</div>
-      <div class="comment">"Wait time was a little long on Saturday night, but the food was worth it." — Chris</div>
-    </div>
-    <!-- Add a Review Button -->
-    <div style="text-align:center; margin-top: 30px;">
-      <button onclick="window.location.href='./review.html'">Add a Review</button>
+      <!-- Criticisms Section -->
+      <h2>Criticisms 💬</h2>
+      <div class="criticisms">
+        <div class="comment">"The pizza was great but arrived a bit cold. Hope it’s hotter next time." — Morgan</div>
+        <div class="comment">"Wait time was a little long on Saturday night, but the food was worth it." — Chris</div>
+      </div>
+
+      <!-- Add Review Button -->
+      <div style="text-align:center; margin-top: 30px;">
+        <button onclick="window.location.href='./review.html'">Add a Review</button>
+      </div>
     </div>
   </div>
 
@@ -73,6 +130,5 @@
       <p>COPYRIGHT © 2025 Mama's Restaurant. All rights reserved.</p>
     </div>
   </footer>
-
 </body>
 </html>
