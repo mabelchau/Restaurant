@@ -18,20 +18,19 @@
       margin: auto;
     }
 
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
     .menu-section {
       margin-bottom: 25px;
     }
 
     .menu-option {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      margin: 5px 0;
+      margin: 8px 0;
+    }
+
+    .menu-option label {
+      flex: 1;
     }
 
     .menu-option input[type="checkbox"] {
@@ -71,10 +70,35 @@
       cursor: pointer;
       text-align: center;
     }
-    
-  </style>
-</head>
 
+      .note {
+      font-size: 0.9rem;
+      color: gray;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .menu-option {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+  <script>
+    // Toggle quantity field based on checkbox selection
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+          const qtyInput = this.closest('.menu-option').querySelector('.quantity');
+          if (qtyInput) {
+            qtyInput.disabled = !this.checked;
+          }
+        });
+      });
+    });
+  </script>
+</head>
 <body>
   <div class="logo"><a href="./home.html"><img src = "./images/logo2.png" height="150px" width="150px"/></a></div>
   <div class="navbar">
@@ -90,57 +114,119 @@
 
   <!-- Menu Form -->
   <form  action="http://www.websitedevelopmentbook.com/FormEcho.php" method="post">
-    <!-- Pasta Section -->
+    
+        <!-- Pasta Section -->
     <div class="menu-section">
-      <label>Pasta Options:</label>
-      <div class="menu-option"><input type="checkbox" name="pasta" value="Spaghetti"/>Spaghetti <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="pasta" value="Fettuccine Alfredo"/>Fettuccine Alfredo <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="pasta" value="Penne Vodka"/>Penne Vodka <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="pasta" value="Linguine Pesto"/>Linguine Pesto <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="pasta" value="Baked Ziti"/>Baked Ziti <input type="number" class="quantity" min="0" placeholder="Qty"></div>
+      <label><strong>Pasta Options:</strong></label>
+      <div class="menu-option">
+        <label for="spaghetti">Spaghetti — $18</label>
+        <input type="checkbox" id="spaghetti" name="pasta[]" value="Spaghetti">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="alfredo">Fettuccine Alfredo — $18</label>
+        <input type="checkbox" id="alfredo" name="pasta[]" value="Fettuccine Alfredo">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="vodka">Penne Vodka — $18</label>
+        <input type="checkbox" id="vodka" name="pasta[]" value="Penne Vodka">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="pesto">Linguine Pesto — $18</label>
+        <input type="checkbox" id="pesto" name="pasta[]" value="Linguine Pesto">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="ziti">Baked Ziti — $18</label>
+        <input type="checkbox" id="ziti" name="pasta[]" value="Baked Ziti">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
     </div>
 
     <!-- Pizza Section -->
     <div class="menu-section">
-      <label>Pizza Options:</label>
-      <div class="menu-option"><input type="checkbox" name="pizza" value="Small Margherita"/>Small Pizza (feeds 2) <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="pizza" value="Large Margherita"/>Large Pizza (feeds 4) <input type="number" class="quantity" min="0" placeholder="Qty"></div>
+      <label><strong>Pizza Options:</strong></label>
+      <div class="menu-option">
+        <label for="small">Small Pizza (feeds 2) — $15</label>
+        <input type="checkbox" id="small" name="pizza[]" value="Small Margherita">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="large">Large Pizza (feeds 4) — $20</label>
+        <input type="checkbox" id="large" name="pizza[]" value="Large Margherita">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
 
-      <label style="margin-top:10px;">Toppings:</label>
-      <div class="menu-option"><input type="checkbox" name="topping" value="Mushrooms"/>Mushrooms</div>
-      <div class="menu-option"><input type="checkbox" name="topping" value="Sausage"/>Sausage</div>
-      <div class="menu-option"><input type="checkbox" name="topping" value="Pepperoni"/>Pepperoni</div>
+      <label style="margin-top:10px;"><strong>Toppings:</strong></label>
+      <p class="note">Toppings included at no extra charge</p>
+      <div class="menu-option"><label>Mushrooms</label><input type="checkbox" name="topping[]" value="Mushrooms"></div>
+      <div class="menu-option"><label>Sausage</label><input type="checkbox" name="topping[]" value="Sausage"></div>
+      <div class="menu-option"><label>Pepperoni</label><input type="checkbox" name="topping[]" value="Pepperoni"></div>
     </div>
 
     <!-- Drinks Section -->
     <div class="menu-section">
-      <label>Drinks:</label>
-      <div class="menu-option"><input type="checkbox" name="drink" value="Coca Cola"/>Coca Cola <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="drink" value="Sprite"/>Sprite <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="drink" value="Coffee"/>Coffee <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="drink" value="Mineral Water"/>Mineral Water <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="drink" value="Wine"/>Wine <input type="number" class="quantity" min="0" placeholder="Qty"></div>
+      <label><strong>Drinks:</strong></label>
+      <div class="menu-option">
+        <label for="coke">Coca Cola — $4</label>
+        <input type="checkbox" id="coke" name="drink[]" value="Coca Cola">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="sprite">Sprite — $4</label>
+        <input type="checkbox" id="sprite" name="drink[]" value="Sprite">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="coffee">Coffee — $5</label>
+        <input type="checkbox" id="coffee" name="drink[]" value="Coffee">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="water">Mineral Water — $10</label>
+        <input type="checkbox" id="water" name="drink[]" value="Mineral Water">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="wine">Wine — $10</label>
+        <input type="checkbox" id="wine" name="drink[]" value="Wine">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
     </div>
 
     <!-- Desserts Section -->
     <div class="menu-section">
-      <label>Desserts:</label>
-      <div class="menu-option"><input type="checkbox" name="dessert" value="Tiramisu"/>Tiramisu <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="dessert" value="Italian Cookies"/>Italian Cookies <input type="number" class="quantity" min="0" placeholder="Qty"></div>
-      <div class="menu-option"><input type="checkbox" name="dessert" value="Affogato"/>Affogato <input type="number" class="quantity" min="0" placeholder="Qty"></div>
+      <label><strong>Desserts:</strong></label>
+      <div class="menu-option">
+        <label for="tiramisu">Tiramisu — $10</label>
+        <input type="checkbox" id="tiramisu" name="dessert[]" value="Tiramisu">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="cookies">Italian Cookies — $10</label>
+        <input type="checkbox" id="cookies" name="dessert[]" value="Italian Cookies">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
+      <div class="menu-option">
+        <label for="affogato">Affogato — $10</label>
+        <input type="checkbox" id="affogato" name="dessert[]" value="Affogato">
+        <input type="number" class="quantity" min="0" placeholder="Qty" disabled>
+      </div>
     </div>
 
-    <!-- Free Items -->
+        <!-- Free Items -->
     <div class="menu-section">
-      <label>Free with every meal:</label>
+      <label><strong>Free with every meal:</strong></label>
       <p>✔ Bread</p>
       <p>✔ Salad</p>
     </div>
 
-    <!-- Preferences -->
+    <!-- Special Instructions -->
     <div class="menu-section">
-      <label>Preferences or Special Instructions:</label>
-      <textarea name="preferences" placeholder="No salt, sauce on the side, need utensils, etc."></textarea>
+      <label for="preferences"><strong>Preferences or Special Instructions:</strong></label>
+      <textarea name="preferences" id="preferences" placeholder="No salt, sauce on the side, need utensils, etc."></textarea>
     </div>
 
     <!-- Order Button -->
