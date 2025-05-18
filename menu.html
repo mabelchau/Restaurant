@@ -179,6 +179,23 @@
       <p>COPYRIGHT © 2025 Mama's Kitchen. All rights reserved.</p>
     </div>
   </footer>
+ 
+  <script>
+    // This function shows a message when a dish name is hovered
+    function showDishMessage() {
+      alert("Try our customer-favorite Fettuccine Alfredo!");
+    }
+  /* 
+    This function confirms the user wants to submit their order 
+    before allowing the form to submit.
+  */
+  function confirmOrder(event) {
+    const confirmAction = confirm("Are you sure you want to submit your order?");
+    if (!confirmAction) {
+      event.preventDefault(); // Cancel form submission
+    }
+  }
+</script>
 
 </body>
 </html>
